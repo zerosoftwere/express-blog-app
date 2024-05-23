@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog App</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Blog App</h1>
+        <img src="/public/images/avatar.jpg" class="avatar">
+        <section class="image-form">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="avatar" accept="image/png, image/gif, image/jpeg">
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+        <section class="post-form">
+            <form action="/post" method="post" class="message" enctype="application/x-www-form-urlencoded">
+                <textarea name="text" placeholder="Enter your post here..."></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </section>
+        <section class="posts">
+            <% for (var i=0; i < data.length; i++) { %>
+                <section>
+
+                    <p class="post">
+                        <%= data[i].text %>
+                    </p>
+                    <a href="/delete-post/<%=data[i].id%>">Delete</a>
+                </section>
+            <% } %>
+        </section>
+    </main>
+    </main>
+</body>
+
+</html>
