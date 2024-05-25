@@ -29,9 +29,9 @@
                 <section>
 
                     <p class="post">
-                        <%= data[i].text %>
+                        <%= data[i] %>
                     </p>
-                    <a href="/delete-post/<%=data[i].id%>">Delete</a>
+                    <a href="/delete-post/<%=i%>">Delete</a>
                 </section>
             <% } %>
         </section>

@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 app.set('view engine', 'ejs');
 const upload = multer({dest: path.join(__dirname, 'temp')})
 
-var posts = [{id: 0, text: "this is first post"}];
+var posts = ['This is fist post'];
 var lastId = 1;
 
 app.get('/', (req, res) => {
@@ -38,18 +38,12 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
 });
 
 app.post('/post', (req, res) => {
-    const text = req.body.text;
-    const post = {id: lastId, text: text}
-    lastId = lastId + 1;
-
-    posts.push(post);
+    posts.push(req.body.text);
     res.redirect('/');
 })
 
-app.get('/delete-post/:id', (req, res) => {
-    const id = +req.params.id;
-    posts = posts.filter(post => post.id !== id);
-    console.log(posts);
+app.get('/delete-post/:index', (req, res) => {
+    posts = posts.filter((post, index) => index !== +req.params.index);
     res.redirect('/');
 })
 
